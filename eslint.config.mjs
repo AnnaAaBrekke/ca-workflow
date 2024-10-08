@@ -10,9 +10,13 @@ export default [
       },
     },
     rules: {
-      quotes: ["error", "double"], // enforce double quotes
-      semi: ["error", "always"], // require semicolons
+      quotes: ["error", "double"],
+      semi: ["error", "always"],
+      "prettier/prettier": ["error"], // enforce Prettier rules
     },
   },
   pluginJs.configs.recommended,
+  {
+    plugins: ["prettier"], // add Prettier plugin
+  },
 ];
