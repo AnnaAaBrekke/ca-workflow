@@ -10,7 +10,7 @@ export default [
       },
     },
     rules: {
-      quotes: ["error", "single"], // enforce single quotes
+      quotes: ["error", "double"], // enforce double quotes
       semi: ["error", "always"], // require semicolons
     },
   },
