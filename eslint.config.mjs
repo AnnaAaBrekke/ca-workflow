@@ -12,7 +12,7 @@ export default [
     },
     rules: {
       quotes: ["error", "double"],
-      semi: ["error", "always"],
+      semi: ["error", "never"], // Will change this to always later
       "prettier/prettier": ["error"], // enforce Prettier rules
     },
     plugins: {
