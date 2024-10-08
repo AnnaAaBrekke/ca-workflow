@@ -8,6 +8,6 @@ This project is a fork of an existing application, aimed to improve the quality 
 
 ## Goals
 The primary objectives of this assignment are:
-- To create a suitable development environment.
+- To create a development environment.
 - To configure essential tools for code quality and testing.
 - To establish a thorough testing strategy that includes both unit and end-to-end tests.
