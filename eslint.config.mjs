@@ -1,7 +1,8 @@
-import globals from "globals"
-import prettier from "eslint-plugin-prettier"
-import jestPlugin from "eslint-plugin-jest"
-import pluginJs from "@eslint/js"
+import globals from "globals";
+import prettier from "eslint-plugin-prettier";
+import jestPlugin from "eslint-plugin-jest";
+import cypressPlugin from "eslint-plugin-cypress";
+import pluginJs from "@eslint/js";
 
 export default [
     {
@@ -23,6 +24,7 @@ export default [
         },
     },
 
+    // Jest configuration
     {
         files: ["**/*.test.js"],
         languageOptions: {
@@ -35,9 +37,25 @@ export default [
         },
         rules: {
             ...jestPlugin.configs.recommended.rules,
-            "jest/prefer-expect-assertions": "off", // Prefer-expect-assertions rule
+            "jest/prefer-expect-assertions": "off",
+        },
+    },
+
+    // Cypress configuration
+    {
+        files: ["**/*.cy.js"],
+        languageOptions: {
+            globals: {
+                ...globals.cypress,
+            },
+        },
+        plugins: {
+            cypress: cypressPlugin,
+        },
+        rules: {
+            ...cypressPlugin.configs.recommended.rules,
         },
     },
 
     pluginJs.configs.recommended,
-]
+];
