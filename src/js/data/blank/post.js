@@ -32,4 +32,4 @@ export const BLANK_POST = {
         comments: 0,
         reactions: 0,
     },
-}
+};
