@@ -1,6 +1,7 @@
-import { login } from "../../../src/js/api/auth/login.js";
-import * as storage from "../../../src/js/storage";
+import { login } from "../../../src/js/api/auth/login";
+import * as storage from "../../../src/js/storage"; // Import the entire storage module
 
+// Mock the storage module
 jest.mock("../../../src/js/storage", () => ({
     save: jest.fn(),
     load: jest.fn(),
@@ -8,10 +9,13 @@ jest.mock("../../../src/js/storage", () => ({
 
 describe("Login function", () => {
     beforeEach(() => {
-        jest.clearAllMocks();
+        jest.clearAllMocks(); // Clear all mock function calls before each test
     });
 
-    test("login function stores a token when provided with valid credentials", async () => {
+    test("should store token in storage when valid credentials are provided", async () => {
+        console.log("Starting the login test...");
+
+        // Mock the fetch API to simulate a successful login response
         global.fetch = jest.fn(() =>
             Promise.resolve({
                 ok: true,
@@ -23,12 +27,20 @@ describe("Login function", () => {
             })
         );
 
+        // Mock to simulate no token initially in the storage
         storage.load.mockReturnValueOnce(null);
 
+        console.log("Calling login function...");
+
+        // Call the login function with valid credentials
         await login("test@noroff.no", "password12345");
 
+        console.log("Login function called, checking expectations...");
+
+        // Check that the token was stored correctly
         expect(storage.save).toHaveBeenCalledWith("token", "mock-token");
 
+        // Verify that the fetch function was called with correct arguments
         expect(fetch).toHaveBeenCalledWith(
             "https://nf-api.onrender.com/api/v1/social/auth/login",
             expect.objectContaining({
@@ -40,6 +52,8 @@ describe("Login function", () => {
                 headers: expect.any(Object),
             })
         );
+
+        console.log("Test finished!");
     });
 });
 
