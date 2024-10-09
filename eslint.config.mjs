@@ -1,6 +1,6 @@
 import globals from "globals"
 import prettier from "eslint-plugin-prettier"
-import jestPlugin from "eslint-plugin-jest" // Renamed to jestPlugin
+import jestPlugin from "eslint-plugin-jest"
 import pluginJs from "@eslint/js"
 
 export default [
@@ -23,20 +23,19 @@ export default [
         },
     },
 
-    // Jest-specific configuration for test files
     {
-        files: ["**/*.test.js"], // Matches all .test.js files
+        files: ["**/*.test.js"],
         languageOptions: {
             globals: {
-                ...globals.jest, // Spread Jest globals with correct permissions
+                ...globals.jest,
             },
         },
         plugins: {
-            jest: jestPlugin, // Use jestPlugin here
+            jest: jestPlugin,
         },
         rules: {
-            ...jestPlugin.configs.recommended.rules, // Apply Jest recommended rules
-            "jest/prefer-expect-assertions": "off", // Optional: Disable prefer-expect-assertions rule
+            ...jestPlugin.configs.recommended.rules,
+            "jest/prefer-expect-assertions": "off", // Prefer-expect-assertions rule
         },
     },
 
