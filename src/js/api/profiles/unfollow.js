@@ -1,5 +1,5 @@
-import { apiPath } from "../constants.js"
-import { headers } from "../headers.js"
+import { apiPath } from "../constants.js";
+import { headers } from "../headers.js";
 
 export async function unfollowProfile(name) {
     const response = await fetch(
@@ -8,11 +8,11 @@ export async function unfollowProfile(name) {
             headers: headers(),
             method: "put",
         }
-    )
+    );
 
     if (response.ok) {
-        return await response.json()
+        return await response.json();
     }
 
-    throw new Error(response.statusText)
+    throw new Error(response.statusText);
 }

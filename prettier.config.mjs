@@ -5,7 +5,7 @@
 const config = {
   trailingComma: "es5",
   tabWidth: 4,
-  semi: false, // Will change this to true later
+  semi: true, 
   singleQuote: false,
 };
 
