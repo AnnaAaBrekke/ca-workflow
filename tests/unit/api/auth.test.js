@@ -8,15 +8,14 @@ jest.mock("../../../src/js/storage", () => ({
     load: jest.fn(),
     remove: jest.fn(),
 }));
+
 describe("Auth functions", () => {
     beforeEach(() => {
-        jest.clearAllMocks(); // Clear all mock function calls before each test
+        jest.clearAllMocks();
     });
 
     describe("Login function", () => {
         test("should store token in storage when valid credentials are provided", async () => {
-            console.log("Starting the login test...");
-
             // Mock the fetch API to simulate a successful login response
             global.fetch = jest.fn(() =>
                 Promise.resolve({
@@ -32,14 +31,10 @@ describe("Auth functions", () => {
             // Mock to simulate no token initially in the storage
             storage.load.mockReturnValueOnce(null);
 
-            console.log("Calling login function...");
-
-            // Call the login function with valid credentials
+            // Valid credentials
             await login("test@noroff.no", "password12345");
 
-            console.log("Login function called, checking expectations...");
-
-            // Check that the token was stored correctly
+            // Checks that the token was stored correctly
             expect(storage.save).toHaveBeenCalledWith("token", "mock-token");
 
             // Verify that the fetch function was called with correct arguments
@@ -54,20 +49,14 @@ describe("Auth functions", () => {
                     headers: expect.any(Object),
                 })
             );
-
-            console.log("Login test finished!");
         });
     });
 
-    describe("Log out function", () => {
+    describe("Logout function", () => {
         test("should clear the token from browser storage", () => {
-            console.log("Starting the logout test..");
             logout();
-            console.log("Call the logout function");
             expect(storage.remove).toHaveBeenCalledWith("token");
             expect(storage.remove).toHaveBeenCalledWith("profile");
-
-            console.log("Logout test finished!");
         });
     });
 });
