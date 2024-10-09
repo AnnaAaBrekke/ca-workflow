@@ -9,7 +9,9 @@
         "start": "sass --watch src/scss:dist/css & live-server",
         "lint": "eslint '**/*.js'",
         "format": "prettier --write '**/*.js'",
-        "prepare": "husky"
+        "prepare": "husky",
+        "test-e2e": "cypress open",
+        "test-e2e-cli": "cypress run"
     },
     "keywords": [],
     "author": "Noroff",
