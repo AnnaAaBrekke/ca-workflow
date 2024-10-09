@@ -13,6 +13,26 @@ describe("Auth functions", () => {
         jest.clearAllMocks(); // Clear all mock function calls before each test
     });
 
+    // TEST FOR ERROR RESPONSE - BUT DP NOT NEED IT I THINK --> but turns it to 100%
+    test("should throw an error if the API response is not ok", async () => {
+        console.log("Starting the login error test...");
+
+        // Mock the fetch API to simulate a failed login response
+        global.fetch = jest.fn(() =>
+            Promise.resolve({
+                ok: false,
+                statusText: "Unauthorized", //FAILED
+            })
+        );
+
+        // Call the login function with invalid credentials
+        await expect(
+            login("invalid@noroff.no", "wrong-password")
+        ).rejects.toThrow("Unauthorized");
+
+        console.log("Login error test finished!");
+    });
+
     describe("Login function", () => {
         test("should store token in storage when valid credentials are provided", async () => {
             console.log("Starting the login test...");
