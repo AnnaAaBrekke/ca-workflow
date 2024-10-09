@@ -12,6 +12,7 @@ describe("Auth functions", () => {
     beforeEach(() => {
         jest.clearAllMocks(); // Clear all mock function calls before each test
     });
+
     describe("Login function", () => {
         test("should store token in storage when valid credentials are provided", async () => {
             console.log("Starting the login test...");
@@ -70,65 +71,3 @@ describe("Auth functions", () => {
         });
     });
 });
-
-// //Example test
-
-// // Mock the browser's localStorage was copied from chatGPT
-// const localStorageMock = (() => {
-//     let store = {};
-
-//     return {
-//         getItem: (key) => store[key] || null,
-//         setItem: (key, value) => {
-//             store[key] = value.toString();
-//         },
-//         removeItem: (key) => {
-//             delete store[key];
-//         },
-//         clear: () => {
-//             store = {};
-//         },
-//     };
-// })();
-
-// Object.defineProperty(global, "localStorage", { value: localStorageMock });
-
-// test("Logout function test", () => {
-//     //Fake items in local storage
-
-//     //call function
-
-//     //expect
-//     expect(localStorage.getItem("token")).toBeNull();
-//     expect(localStorage.getItem("profile")).toBeNull();
-// })
-
-// _________
-
-// import { apiPath } from "../constants.js";
-// import { headers } from "../headers.js";
-// import { save } from "../../storage/index.js";
-
-// export async function login(email, password) {
-//     const response = await fetch(`${apiPath}/social/auth/login`, {
-//         method: "post",
-//         body: JSON.stringify({ email, password }),
-//         headers: headers("application/json"),
-//     });
-
-//     if (response.ok) {
-//         const profile = await response.json();
-//         save("token", profile.accessToken);
-//         delete profile.accessToken;
-//         save("profile", profile);
-//         return profile;
-//     }
-
-//     throw new Error(response.statusText);
-// }
-// import { remove } from "../../storage/index.js";
-
-// export function logout() {
-//     remove("token");
-//     remove("profile");
-// }
