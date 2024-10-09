@@ -1,23 +1,43 @@
-import globals from "globals";
-import pluginJs from "@eslint/js";
-import prettier from "eslint-plugin-prettier"; // Import Prettier plugin
+import globals from "globals"
+import prettier from "eslint-plugin-prettier"
+import jestPlugin from "eslint-plugin-jest"
+import pluginJs from "@eslint/js"
 
 export default [
-  {
-    languageOptions: {
-      globals: {
-        ...globals.browser,
-        ...globals.node,
-      },
+    {
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+                ...globals.node,
+            },
+            ecmaVersion: "latest",
+            sourceType: "module",
+        },
+        rules: {
+            quotes: ["error", "double"],
+            semi: ["error", "always"],
+            "prettier/prettier": ["error"],
+        },
+        plugins: {
+            prettier,
+        },
     },
-    rules: {
-      quotes: ["error", "double"],
-      semi: ["error", "always"], 
-      "prettier/prettier": ["error"], // enforce Prettier rules
+
+    {
+        files: ["**/*.test.js"],
+        languageOptions: {
+            globals: {
+                ...globals.jest,
+            },
+        },
+        plugins: {
+            jest: jestPlugin,
+        },
+        rules: {
+            ...jestPlugin.configs.recommended.rules,
+            "jest/prefer-expect-assertions": "off", // Prefer-expect-assertions rule
+        },
     },
-    plugins: {
-      prettier: prettier, // Define Prettier as a plugin
-    },
-  },
-  pluginJs.configs.recommended,
-];
+
+    pluginJs.configs.recommended,
+]
