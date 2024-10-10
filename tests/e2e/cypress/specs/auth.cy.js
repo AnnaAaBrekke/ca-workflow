@@ -1,23 +1,43 @@
-// describe("Login functionality", () => {
+// describe("Login and logout", () => {
 //     beforeEach(() => {
-//         cy.visit("/"); // Adjust this URL if necessary
+//         cy.visit("./");
 //     });
 
-//     it("should let the user log in with the login form with valid credentials", () => {
-//         // Check if the registration modal is open, if so, close it
-//         cy.get("#registerModal").then(($modal) => {
-//             if ($modal.is(":visible")) {
-//                 // Close the registration modal if it's visible
-//                 cy.get("#registerModal .btn-close").click(); // Adjust selector if needed
+//     it("should log in the user with valid credentials", () => {
+//         // Intercept the login API call
+//         cy.intercept(
+//             "POST",
+//             `${Cypress.env("API_BASE_URL")}/social/auth/login`,
+//             {
+//                 statusCode: 200,
+//                 body: {
+//                     accessToken: "fakeAccessToken",
+//                     name: "E2E User",
+//                 },
 //             }
-//         });
-//         // cy.get('button[data-bs-toggle="modal"]').contains("Login").click(); // Adjust selector if necessary
+//         ).as("loginRequest");
 
-//         // Ensure the modal is visible before trying to fill in the form
-//         // cy.get("#loginModal").should("be.visible");
+//         cy.get("#registerModal").should("be.visible");
+//         cy.wait(500);
+//         cy.get('#registerForm button[data-auth="login"]').click();
 
-//         // Fill in the login form
-//         // cy.get("#loginForm #loginEmail").type("testuser@stud.noroff.no"); // Replace with a valid test email
-//         // cy.get("#loginForm #loginPassword").type("validpassword"); // Fixed syntax error
+//         cy.get("#loginModal").should("be.visible");
+//         cy.wait(500);
+
+//         cy.get("#loginForm #loginEmail").type("e2euser@noroff.no");
+//         cy.get("#loginForm #loginPassword").type("e2ePassword");
+
+//         cy.wait(500);
+//         cy.get("#loginForm button[type='submit'].btn-success").click();
+
+//         cy.url().should("include", "profile");
+//     });
+
+//     it("should log out the user with the logout button", () => {
+//         cy.get('button[data-auth="logout"]').should("be.visible");
+
+//         cy.get('button[data-auth="logout"]').click();
+
+//         cy.url().should("eq", "/");
 //     });
 // });
