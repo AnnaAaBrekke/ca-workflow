@@ -32,4 +32,5 @@ Important Notes
 •	Issues: While working on another project you may encounter bugs or issues with this project. If a test is failing, create a new Issue to contact the project owner. If you wish to offer a fix for this bug, please do so in a separate Pull Request, for example from the branch worfklow-fixes.
 Resources
 •	Noroff Social Media Application
+
 ![image](https://github.com/user-attachments/assets/d9be3641-97af-45b7-8bab-97a3eab4ca64)
