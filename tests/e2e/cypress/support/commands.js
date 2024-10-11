@@ -1,25 +1,40 @@
-// ***********************************************
-// This example commands.js shows you how to
-// create various custom commands and overwrite
-// existing commands.
-//
-// For more comprehensive examples of custom
-// commands please read more here:
-// https://on.cypress.io/custom-commands
-// ***********************************************
-//
-//
-// -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
-//
-//
-// -- This is a child command --
-// Cypress.Commands.add('drag', { prevSubject: 'element'}, (subject, options) => { ... })
-//
-//
-// -- This is a dual command --
-// Cypress.Commands.add('dismiss', { prevSubject: 'optional'}, (subject, options) => { ... })
-//
-//
-// -- This will overwrite an existing command --
-// Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+// Cypress.Commands.add("login", () => {
+//     cy.intercept("POST", `${Cypress.env("API_BASE_URL")}/social/auth/login`, {
+//         statusCode: 200,
+//         body: {
+//             accessToken: "fakeAccessToken",
+//             name: "E2E User",
+//         },
+//     }).as("loginRequest");
+
+//     cy.get("#registerModal").should("be.visible");
+//     cy.wait(500);
+
+//     cy.get('#registerForm button[data-auth="login"]').click();
+
+//     cy.get("#loginModal").should("be.visible");
+
+//     cy.wait(500);
+
+//     cy.get("#loginForm #loginEmail").type(Cypress.env("userEmail"));
+//     cy.get("#loginForm #loginPassword").type(Cypress.env("userPassword"));
+
+//     cy.wait(500);
+
+//     cy.get("#loginForm button[type='submit'].btn-success").click();
+
+//     cy.wait("@loginRequest").its("response.statusCode").should("eq", 200);
+//     cy.url().should("include", "profile");
+
+//     cy.intercept("GET", `${Cypress.env("API_BASE_URL")}/social/profiles/**`, {
+//         statusCode: 200,
+//         body: {
+//             name: "E2E User",
+//             followers: [],
+//             following: [],
+//             posts: [],
+//         },
+//     }).as("getProfile");
+
+//     cy.wait("@getProfile").its("response.statusCode").should("eq", 200);
+// });
