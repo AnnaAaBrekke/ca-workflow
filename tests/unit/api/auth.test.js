@@ -1,6 +1,6 @@
-import { login } from "../../../src/js/api/auth/login";
-import { logout } from "../../../src/js/api/auth/logout";
-import * as storage from "../../../src/js/storage"; // Import the entire storage module
+const { login } = require("../../../src/js/api/auth/login");
+const { logout } = require("../../../src/js/api/auth/logout");
+const storage = require("../../../src/js/storage"); // Import the entire storage module// Import the entire storage module
 
 // Mock the storage module
 jest.mock("../../../src/js/storage", () => ({
