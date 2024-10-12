@@ -5,31 +5,32 @@ import cypressPlugin from "eslint-plugin-cypress";
 import pluginJs from "@eslint/js";
 
 export default [
+    // Base configuration for browser and Node.js
     {
         languageOptions: {
             globals: {
-                ...globals.browser,
-                ...globals.node,
+                ...globals.browser, // Recognize browser-specific globals (like window, document)
+                ...globals.node, // Recognize Node.js-specific globals (like process, global)
             },
             ecmaVersion: "latest",
             sourceType: "module",
         },
         rules: {
-            quotes: ["error", "double"],
-            semi: ["error", "always"],
-            "prettier/prettier": ["error"],
+            quotes: ["error", "double"], // Enforce double quotes
+            semi: ["error", "always"], // Enforce semicolons
+            "prettier/prettier": ["error"], // Enforce Prettier rules
         },
         plugins: {
             prettier,
         },
     },
 
-    // Jest configuration
+    // Jest-specific configuration for test files
     {
         files: ["**/*.test.js"],
         languageOptions: {
             globals: {
-                ...globals.jest,
+                ...globals.jest, // Recognize Jest-specific globals (describe, it, expect, etc.)
             },
         },
         plugins: {
@@ -41,12 +42,12 @@ export default [
         },
     },
 
-    // Cypress configuration
+    // Cypress-specific configuration for e2e tests
     {
-        files: ["**/*.cy.js"],
+        files: ["**/*.cy.js", "tests/e2e/cypress/**/*.js"],
         languageOptions: {
             globals: {
-                ...globals.cypress,
+                ...globals.cypress, // Recognize Cypress-specific globals (cy, Cypress)
             },
         },
         plugins: {
@@ -54,8 +55,10 @@ export default [
         },
         rules: {
             ...cypressPlugin.configs.recommended.rules,
+            "cypress/no-unnecessary-waiting": "error", // Avoid unnecessary cy.wait() calls
         },
     },
 
+    // Prettier configuration
     pluginJs.configs.recommended,
 ];

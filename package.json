@@ -7,7 +7,7 @@
         "test": "jest",
         "build": "sass src/scss:dist/css",
         "start": "sass --watch src/scss:dist/css & live-server",
-        "lint": "eslint '**/*.js'",
+        "lint": "eslint 'src/**/*.js' 'tests/**/*.js' 'tests/**/*.cy.js'",
         "format": "prettier --write '**/*.js'",
         "prepare": "husky",
         "test-e2e": "cypress open",
