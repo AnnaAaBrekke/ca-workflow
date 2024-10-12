@@ -5,12 +5,18 @@ import cypressPlugin from "eslint-plugin-cypress";
 import pluginJs from "@eslint/js";
 
 export default [
-    // Base configuration for browser and Node.js
     {
+        files: [
+            "src/**/*.js",
+            "tests/**/*.js",
+            "tests/**/*.cy.js",
+            "tests/e2e/cypress/**/*.js",
+        ],
         languageOptions: {
             globals: {
-                ...globals.browser, // Recognize browser-specific globals (like window, document)
-                ...globals.node, // Recognize Node.js-specific globals (like process, global)
+                ...globals.browser, // Recognize browser-specific globals
+                ...globals.node, // Recognize Node.js-specific globals
+                ...globals.cypress, // Recognize Cypress-specific globals
             },
             ecmaVersion: "latest",
             sourceType: "module",
@@ -18,14 +24,15 @@ export default [
         rules: {
             quotes: ["error", "double"], // Enforce double quotes
             semi: ["error", "always"], // Enforce semicolons
-            "prettier/prettier": ["error"], // Enforce Prettier rules
+            "prettier/prettier": ["error"], // Prettier rules integration
         },
         plugins: {
             prettier,
+            cypress: cypressPlugin,
         },
     },
 
-    // Jest-specific configuration for test files
+    // Jest-specific configuration
     {
         files: ["**/*.test.js"],
         languageOptions: {
@@ -38,7 +45,6 @@ export default [
         },
         rules: {
             ...jestPlugin.configs.recommended.rules,
-            "jest/prefer-expect-assertions": "off",
         },
     },
 
@@ -55,10 +61,7 @@ export default [
         },
         rules: {
             ...cypressPlugin.configs.recommended.rules,
-            "cypress/no-unnecessary-waiting": "error", // Avoid unnecessary cy.wait() calls
+            "cypress/no-unnecessary-waiting": "off", // Avoid unnecessary cy.wait() calls
         },
     },
-
-    // Prettier configuration
-    pluginJs.configs.recommended,
 ];

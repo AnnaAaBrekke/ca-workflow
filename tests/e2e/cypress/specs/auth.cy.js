@@ -5,18 +5,17 @@ describe("Login and logout", () => {
         cy.visit("./");
     });
 
-    it("should log in the user with valid credentials", () => {
+    it("should log in the user with valid credentials and then log out using logout button", () => {
         // Custom login command
         cy.login();
-    });
 
-    it("should log out the user when clicking the logout button", () => {
-        cy.wait(500);
+        cy.get("button[data-auth='logout']").should("be.visible");
+        cy.get("button[data-auth='logout']").click();
 
-        cy.login();
+        cy.url().should("not.include", "profile"); // Verify the user is no longer on the profile page
 
-        cy.get('button[data-auth="logout"]').should("be.visible");
-
-        cy.get('button[data-auth="logout"]').click();
+        cy.window().then((win) => {
+            expect(win.localStorage.getItem("accessToken")).to.be.null;
+        });
     });
 });

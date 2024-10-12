@@ -10,7 +10,7 @@ Cypress.Commands.add("login", () => {
     cy.get("#registerModal").should("be.visible");
     cy.wait(500);
 
-    cy.get('#registerForm button[data-auth="login"]').click();
+    cy.get("#registerForm button[data-auth='login']").click();
 
     cy.get("#loginModal").should("be.visible");
 
