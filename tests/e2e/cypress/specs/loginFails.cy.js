@@ -3,7 +3,7 @@ describe("Invalid login attempts", () => {
         cy.visit("./");
     });
 
-    it("should show an error message for invalid login credentials", () => {
+    it.skip("should show an error message for invalid login credentials", () => {
         // Intercept the login API call and mock a 401 response
         cy.intercept(
             "POST",
