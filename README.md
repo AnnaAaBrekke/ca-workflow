@@ -4,4 +4,4 @@ Workflow tools :
 
 1. Installed and configured ESLint and Prettier for code linting and formatting.
 2. Created the commands to run Eslint and prettier
-3. Husky ?
+3. Husky configuration. Running pre commit hooks that lint format and test the code before committing it.
