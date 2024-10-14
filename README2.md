@@ -1,0 +1,1 @@
+[![Automated Unit Testing](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/unit-test.yml/badge.svg?branch=workflow)](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/unit-test.yml)
