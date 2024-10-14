@@ -16,7 +16,7 @@ The primary objectives of this assignment are:
 -   To establish a thorough testing strategy that includes both unit and end-to-end tests.
 
 
-## Workflow auto testing
+## Workflow auto testing status badges
 
 [![Automated Unit Testing](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/unit-test.yml/badge.svg)](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/unit-test.yml)
 [![Automated E2E Testing](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/e2e-test.yml)
