@@ -24,7 +24,7 @@ export default [
         rules: {
             quotes: ["error", "double"], // Enforce double quotes
             semi: ["error", "always"], // Enforce semicolons
-            "prettier/prettier": ["error"], // Prettier rules integration
+            "prettier/prettier": ["error"],
         },
         plugins: {
             prettier,
@@ -37,7 +37,7 @@ export default [
         files: ["**/*.test.js"],
         languageOptions: {
             globals: {
-                ...globals.jest, // Recognize Jest-specific globals (describe, it, expect, etc.)
+                ...globals.jest,
             },
         },
         plugins: {
@@ -53,7 +53,7 @@ export default [
         files: ["**/*.cy.js", "tests/e2e/cypress/**/*.js"],
         languageOptions: {
             globals: {
-                ...globals.cypress, // Recognize Cypress-specific globals (cy, Cypress)
+                ...globals.cypress,
             },
         },
         plugins: {
@@ -61,7 +61,7 @@ export default [
         },
         rules: {
             ...cypressPlugin.configs.recommended.rules,
-            "cypress/no-unnecessary-waiting": "off", // Avoid unnecessary cy.wait() calls
+            "cypress/no-unnecessary-waiting": "off",
         },
     },
 ];
