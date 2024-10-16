@@ -8,7 +8,6 @@ module.exports = defineConfig({
         fixturesFolder: "tests/e2e/cypress/fixtures.js",
         defaultCommandTimeout: 10000, // Extended command timeout to 10 seconds
 
-        setupNodeEvents(/* on, config */) {
-        },
+        setupNodeEvents(/* on, config */) {},
     },
 });

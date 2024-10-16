@@ -4,7 +4,6 @@ describe("Login and logout", () => {
     });
 
     it("should log in the user with valid credentials and then log out using logout button", () => {
-        
         // Custom login command created in /support/command.js
         cy.login();
 

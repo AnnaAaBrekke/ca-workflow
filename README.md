@@ -23,6 +23,11 @@ The primary objectives of this assignment are:
 -   Husky: Git hooks are managed by Husky for ensuring pre-commit code quality.
 -   Automated Testing: This project uses automated testing for both unit tests and E2E tests.
 
+## Workflow Status Badges
+
+[![Automated Unit Testing](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/unit-test.yml/badge.svg)](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/unit-test.yml)
+[![Automated E2E Testing](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/e2e-test.yml)
+
 ## Prerequisites
 
 To set up the project, you will need:
@@ -30,36 +35,6 @@ To set up the project, you will need:
 -   Node.js (version 18+)
 -   npm (version 7+)
 -   Git
-
-## Workflow auto testing status badges
-
-[![Automated Unit Testing](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/unit-test.yml/badge.svg)](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/unit-test.yml)
-[![Automated E2E Testing](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/e2e-test.yml)
-
-To update the README professionally, you should include comprehensive details about the project, its purpose, how to set it up, and usage instructions. Here’s an updated version of your README:
-
-Workflow Course Assignment
-Course: Workflow
-Date: October, 2024
-
-Overview
-This project is a fork of an existing application designed to improve code quality through the implementation of development workflows and the creation of a robust testing strategy. The project involves configuring essential tools, identifying bugs, and implementing comprehensive testing to ensure high-quality code.
-
-Goals
-The main objectives of this assignment are:
-
-Set up a development environment.
-Configure essential tools for code quality, linting, and formatting.
-Establish a testing strategy, including unit tests and end-to-end (E2E) tests.
-Automate the workflow using continuous integration (CI) for code quality checks and tests.
-Features
-Automated Testing: This project uses automated testing for both unit tests and E2E tests.
-ESLint & Prettier: Integrated linting and code formatting with ESLint and Prettier to enforce consistent code style.
-Cypress for E2E Testing: E2E tests are handled with Cypress for simulating real-world user interactions.
-Jest for Unit Testing: Unit tests are written and run using Jest.
-Husky: Git hooks are managed by Husky for ensuring pre-commit code quality.
-Sass for Styling: The project uses Sass for styling, with automatic compilation.
-Workflow Status Badges
 
 ## Getting Started
 
@@ -108,7 +83,8 @@ In the project directory, you can run the following commands:
     `bash`
     npm run format
     `bash`
-    Setting Up Husky
+
+# Setting Up Husky
 
 -   Husky is already configured to run linting and testing before commits. To ensure it's working:
     `bash`
