@@ -26,10 +26,8 @@ Cypress.Commands.add(
         cy.wait(500);
 
         cy.get("#loginForm #loginEmail").type(email);
-        cy.log("Email:", Cypress.env("userEmail"));
 
         cy.get("#loginForm #loginPassword").type(password);
-        cy.log("Password:", Cypress.env("userPassword"));
 
         cy.wait(500);
 
