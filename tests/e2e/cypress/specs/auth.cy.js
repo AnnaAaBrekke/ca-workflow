@@ -8,15 +8,13 @@ describe("Login and logout", () => {
         cy.login();
     });
 
-    it("should log out the user and clear the access token", () => {
-        cy.wait(500);
-
+    it("should log out the user with the logout button", () => {
+        cy.wait(1000);
         cy.login();
-        cy.wait(500);
 
         cy.get("button[data-auth='logout']").click();
 
-        cy.wait(500);
+        cy.wait(1000);
 
         cy.url().should("not.include", "profile");
         cy.wait(500);
@@ -24,6 +22,5 @@ describe("Login and logout", () => {
         cy.window().then((win) => {
             expect(win.localStorage.getItem("accessToken")).to.be.null;
         });
-        cy.wait(500);
     });
 });
