@@ -34,38 +34,52 @@ The primary objectives of this assignment are:
 -   npm (version 7+)
 -   Git
 
-## Getting Started
-
-# Clone the Repository
+### Clone the Repository
 
 `git clone https://github.com/AnnaAaBrekke/ca-workflow.git`
+
 `cd ca-workflow`
 
-# Install Dependencies
+### Install Dependencies
 
 `npm install`
 
-# Available Scripts
+### Available Scripts
 
 In the project directory, you can run the following commands:
 
 -   Start Development Server: Automatically compiles Sass and serves the app with live reloading.
+
     `npm start`
+
 -   Run Unit Tests: Execute unit tests using Jest.
+
     `npm run test-unit`
+
 -   Run E2E Tests (with Cypress GUI): Open Cypress in the interactive mode to run end-to-end tests.
+
     `npm run test-e2e`
+
 -   Run E2E Tests (Headless): Run Cypress E2E tests in the terminal without opening the Cypress UI.
+
     `npm run test-e2e-cli`
+
 -   Run All Tests: Run both unit and E2E tests in sequence.
+
     `npm test`
+
 -   Lint the Code: Run ESLint to check for code quality and style issues.
+
     `npm run lint`
+
 -   Format Code: Run Prettier to format the code based on predefined rules.
+
     `npm run format`
 
-# Setting Up Husky
+### Setting Up Husky
 
 -   Husky is already configured to run linting and testing before commits. To ensure it's working:
+
     `npm run prepare`
+
     This will set up the Husky hooks in your local environment.
