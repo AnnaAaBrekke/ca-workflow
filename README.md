@@ -2,6 +2,7 @@
 
 **Course**: Workflow  
 **Date**: October, 2024
+**Author**: Anna Aa. Brekke
 
 ## Overview
 
@@ -9,7 +10,7 @@ This project is a fork of an existing application, aimed to improve the quality 
 
 ## Goals
 
-The primary objectives of this assignment are:
+The primary tasks of this assignment are:
 
 -   To create a development environment.
 -   To configure essential tools for code quality and testing.
