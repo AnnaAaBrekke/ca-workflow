@@ -40,54 +40,34 @@ To set up the project, you will need:
 
 # Clone the Repository
 
-`bash`
-git clone https://github.com/AnnaAaBrekke/ca-workflow.git
-cd ca-workflow
-`bash`
+`git clone https://github.com/AnnaAaBrekke/ca-workflow.git`
+`cd ca-workflow`
 
 # Install Dependencies
 
-`bash`
-npm install
-`bash`
+`npm install`
 
 # Available Scripts
 
 In the project directory, you can run the following commands:
 
 -   Start Development Server: Automatically compiles Sass and serves the app with live reloading.
-    `bash`
-    npm start
-    `bash`
+    `npm start`
 -   Run Unit Tests: Execute unit tests using Jest.
-    `bash`
-    npm run test-unit
-    `bash`
+    `npm run test-unit`
 -   Run E2E Tests (with Cypress GUI): Open Cypress in the interactive mode to run end-to-end tests.
-    `bash`
-    npm run test-e2e
-    `bash`
+    `npm run test-e2e`
 -   Run E2E Tests (Headless): Run Cypress E2E tests in the terminal without opening the Cypress UI.
-    `bash`
-    npm run test-e2e-cli
-    `bash`
+    `npm run test-e2e-cli`
 -   Run All Tests: Run both unit and E2E tests in sequence.
-    `bash`
-    npm test
-    `bash`
+    `npm test`
 -   Lint the Code: Run ESLint to check for code quality and style issues.
-    `bash`
-    npm run lint
-    `bash`
+    `npm run lint`
 -   Format Code: Run Prettier to format the code based on predefined rules.
-    `bash`
-    npm run format
-    `bash`
+    `npm run format`
 
 # Setting Up Husky
 
 -   Husky is already configured to run linting and testing before commits. To ensure it's working:
-    `bash`
-    npm run prepare
-    `bash`
+    `npm run prepare`
     This will set up the Husky hooks in your local environment.
