@@ -1,9 +1,13 @@
 describe("Invalid login attempts", () => {
     beforeEach(() => {
         cy.visit("./");
+        Cypress.on("uncaught:exception", (err) => {
+            if (err.message.includes("Invalid credentials")) {
+                return false;
+            }
+        });
     });
-
-    it.skip("should show an error message for invalid login credentials", () => {
+    it("should show an error message for invalid login credentials", () => {
         cy.intercept(
             "POST",
             `${Cypress.env("API_BASE_URL")}/social/auth/login`,
@@ -38,6 +42,9 @@ describe("Invalid login attempts", () => {
             .its("response.statusCode")
             .should("eq", 401);
 
-        cy.get("@alertStub").should("be.calledWith", "Invalid credentials");
+        cy.get("@alertStub").should(
+            "be.calledWith",
+            "Either your username was not found or your password is incorrect"
+        );
     });
 });
