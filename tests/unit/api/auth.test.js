@@ -1,6 +1,6 @@
 const { login } = require("../../../src/js/api/auth/login");
 const { logout } = require("../../../src/js/api/auth/logout");
-const storage = require("../../../src/js/storage"); // Import the entire storage module// Import the entire storage module
+const storage = require("../../../src/js/storage");
 
 // Mock the storage module
 jest.mock("../../../src/js/storage", () => ({
@@ -32,19 +32,22 @@ describe("Auth functions", () => {
             storage.load.mockReturnValueOnce(null);
 
             // Valid credentials
-            await login("test@noroff.no", "password12345");
+            await login(
+                process.env.JEST_USER_EMAIL,
+                process.env.JEST_USER_PASSWORD
+            );
 
             // Checks that the token was stored correctly
             expect(storage.save).toHaveBeenCalledWith("token", "mock-token");
 
             // Verify that the fetch function was called with correct arguments
             expect(fetch).toHaveBeenCalledWith(
-                "https://nf-api.onrender.com/api/v1/social/auth/login",
+                `${process.env.API_BASE_URL}/social/auth/login`,
                 expect.objectContaining({
                     method: "post",
                     body: JSON.stringify({
-                        email: "test@noroff.no",
-                        password: "password12345",
+                        email: process.env.JEST_USER_EMAIL,
+                        password: process.env.JEST_USER_PASSWORD,
                     }),
                     headers: expect.any(Object),
                 })
