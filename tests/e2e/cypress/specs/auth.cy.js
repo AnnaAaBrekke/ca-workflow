@@ -14,7 +14,7 @@ describe("Login and logout", () => {
 
         cy.get("button[data-auth='logout']").click();
 
-        cy.wait(1000);
+        cy.wait(2000);
 
         cy.url().should("not.include", "profile");
         cy.wait(500);
