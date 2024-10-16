@@ -1,40 +1,57 @@
-Cypress.Commands.add("login", () => {
-    cy.intercept("POST", `${Cypress.env("API_BASE_URL")}/social/auth/login`, {
-        statusCode: 200,
-        body: {
-            accessToken: "fakeAccessToken",
-            name: "E2E User",
-        },
-    }).as("loginRequest");
+Cypress.Commands.add(
+    "login",
+    (
+        email = Cypress.env("userEmail"),
+        password = Cypress.env("userPassword")
+    ) => {
+        cy.intercept(
+            "POST",
+            `${Cypress.env("API_BASE_URL")}/social/auth/login`,
+            {
+                statusCode: 200,
+                body: {
+                    accessToken: "fakeAccessToken",
+                    name: "E2E User",
+                },
+            }
+        ).as("loginRequest");
 
-    cy.get("#registerModal").should("be.visible");
-    cy.wait(500);
+        cy.get("#registerModal").should("be.visible");
+        cy.wait(500);
 
-    cy.get("#registerForm button[data-auth='login']").click();
+        cy.get("#registerForm button[data-auth='login']").click();
 
-    cy.get("#loginModal").should("be.visible");
+        cy.get("#loginModal").should("be.visible");
 
-    cy.wait(500);
+        cy.wait(500);
 
-    cy.get("#loginForm #loginEmail").type(Cypress.env("userEmail"));
-    cy.get("#loginForm #loginPassword").type(Cypress.env("userPassword"));
+        cy.get("#loginForm #loginEmail").type(email);
+        cy.log("Email:", Cypress.env("userEmail"));
 
-    cy.wait(500);
+        cy.get("#loginForm #loginPassword").type(password);
+        cy.log("Password:", Cypress.env("userPassword"));
 
-    cy.get("#loginForm button[type='submit'].btn-success").click();
+        cy.wait(500);
 
-    cy.wait("@loginRequest").its("response.statusCode").should("eq", 200);
-    cy.url().should("include", "profile");
+        cy.get("#loginForm button[type='submit'].btn-success").click();
 
-    cy.intercept("GET", `${Cypress.env("API_BASE_URL")}/social/profiles/**`, {
-        statusCode: 200,
-        body: {
-            name: "E2E User",
-            followers: [],
-            following: [],
-            posts: [],
-        },
-    }).as("getProfile");
+        cy.wait("@loginRequest").its("response.statusCode").should("eq", 200);
+        cy.url().should("include", "profile");
 
-    cy.wait("@getProfile").its("response.statusCode").should("eq", 200);
-});
+        cy.intercept(
+            "GET",
+            `${Cypress.env("API_BASE_URL")}/social/profiles/**`,
+            {
+                statusCode: 200,
+                body: {
+                    name: "E2E User",
+                    followers: [],
+                    following: [],
+                    posts: [],
+                },
+            }
+        ).as("getProfile");
+
+        cy.wait("@getProfile").its("response.statusCode").should("eq", 200);
+    }
+);
