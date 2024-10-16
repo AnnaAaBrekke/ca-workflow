@@ -28,9 +28,7 @@ The primary objectives of this assignment are:
 [![Automated Unit Testing](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/unit-test.yml/badge.svg)](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/unit-test.yml)
 [![Automated E2E Testing](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/e2e-test.yml/badge.svg)](https://github.com/AnnaAaBrekke/ca-workflow/actions/workflows/e2e-test.yml)
 
-## Prerequisites
-
-To set up the project, you will need:
+## To set up the project, you will need:
 
 -   Node.js (version 18+)
 -   npm (version 7+)
