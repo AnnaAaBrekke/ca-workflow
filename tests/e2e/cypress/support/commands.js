@@ -16,6 +16,20 @@ Cypress.Commands.add(
             }
         ).as("loginRequest");
 
+        cy.intercept(
+            "GET",
+            `${Cypress.env("API_BASE_URL")}/social/profiles/**`,
+            {
+                statusCode: 200,
+                body: {
+                    name: "E2E User",
+                    followers: [],
+                    following: [],
+                    posts: [],
+                },
+            }
+        ).as("getProfile");
+
         cy.get("#registerModal").should("be.visible");
         cy.wait(500);
 
@@ -35,20 +49,6 @@ Cypress.Commands.add(
 
         cy.wait("@loginRequest").its("response.statusCode").should("eq", 200);
         cy.url().should("include", "profile");
-
-        cy.intercept(
-            "GET",
-            `${Cypress.env("API_BASE_URL")}/social/profiles/**`,
-            {
-                statusCode: 200,
-                body: {
-                    name: "E2E User",
-                    followers: [],
-                    following: [],
-                    posts: [],
-                },
-            }
-        ).as("getProfile");
 
         cy.wait("@getProfile").its("response.statusCode").should("eq", 200);
     }
