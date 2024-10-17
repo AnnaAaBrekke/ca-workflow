@@ -6,7 +6,7 @@ module.exports = defineConfig({
         specPattern: "tests/e2e/cypress/specs/**/*.cy.js",
         supportFile: "tests/e2e/cypress/support/commands.js",
         fixturesFolder: "tests/e2e/cypress/fixtures.js",
-        defaultCommandTimeout: 10000, // Extended command timeout to 10 seconds
+        defaultCommandTimeout: 10000,
 
         setupNodeEvents(/* on, config */) {},
     },

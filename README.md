@@ -45,6 +45,16 @@ The primary tasks of this assignment are:
 
 `npm install`
 
+### Build and Style Management
+
+-   SASS Compilation: The project uses SASS (Syntactically Awesome Stylesheets) to handle styles. Run the following command to compile all SASS files into CSS:
+
+    `npm run build`
+
+    This command ensures that all styles are optimized and ready for production.
+
+    **Note:** The SASS compilation also affects the appearance and layout of elements during testing. If SASS is not compiled correctly, visual and functional behavior in the tests might not match the real-world behavior of the application modules, leading to inconsistent results.
+
 ### Available Scripts
 
 In the project directory, you can run the following commands:

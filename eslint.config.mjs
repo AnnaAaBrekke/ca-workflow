@@ -14,9 +14,9 @@ export default [
         ],
         languageOptions: {
             globals: {
-                ...globals.browser, // Recognize browser-specific globals
-                ...globals.node, // Recognize Node.js-specific globals
-                ...globals.cypress, // Recognize Cypress-specific globals
+                ...globals.browser,
+                ...globals.node,
+                ...globals.cypress,
             },
             ecmaVersion: "latest",
             sourceType: "module",
